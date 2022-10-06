@@ -1,0 +1,18 @@
+DOCUMENTAÇÃO API GSPACE
+
+Listar todos os produtos
+- GET - https://apigspace.herokuapp.com/produtos
+
+Cadastro de produtos
+- POST - https://apigspace.herokuapp.com/produtos
+
+Editar
+- PUT - https://apigspace.herokuapp.com/id
+
+Deletar
+- DELETE - https://apigspace.herokuapp.com/id
+
+Rotas com queryes
+
+Listar produto x com a cor x
+- GET - https://apigspace.herokuapp.com/produtos/cor?cor=x&produto=x
