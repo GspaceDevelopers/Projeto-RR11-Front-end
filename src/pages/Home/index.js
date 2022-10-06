@@ -13,6 +13,7 @@ import api from '../../services/api'
 import { FiTrash } from 'react-icons/fi'
 import SlideHome from '../../Components/SlideHome'
 import { toast } from 'react-toastify'
+import './responsiveHome.css'
 
 
 export default function Home() {
@@ -193,7 +194,7 @@ export default function Home() {
                         <button onClick={closemodalview} id='btnclosedetailshome'>X</button>
                     </div>
                     <div style={{ display: "flex", gap: "5px" }}>
-                        <img style={{ width: "300px", height: "300px", objectFit: "cover" }} src={imginfoview == null ? iteminfo.imgurl : imginfoview}></img>
+                        <img style={{ width: "250px", height: "250px", objectFit: "cover" }} src={imginfoview == null ? iteminfo.imgurl : imginfoview}></img>
                         <div style={{ display: "flex", flexDirection: "column", gap: "5px" }}>
                             <button onClick={() => setImginfoview(iteminfo.imgurl)}>{iteminfo.imgurl === '' ? '' : <img className="styleimg" id="img1" src={iteminfo.imgurl}></img>}</button>
                             <button onClick={() => setImginfoview(iteminfo.imgurl2)}>{iteminfo.imgurl2 === '' ? '' : <img className="styleimg" id="img2" src={iteminfo.imgurl2}></img>}</button>

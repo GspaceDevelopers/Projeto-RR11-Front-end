@@ -3,10 +3,20 @@
   padding: 0;
   box-sizing: border-box;
 }
-button{
+
+body {
+  width: 100%;
+}
+
+button {
   cursor: pointer;
   border: 0;
 }
-::-webkit-scrollbar{
+
+::-webkit-scrollbar {
   display: none;
+}
+
+.App {
+  width: 100%;
 }
