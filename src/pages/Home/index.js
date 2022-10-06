@@ -41,17 +41,20 @@ export default function Home() {
 
             const header = document.getElementById('header')
 
+
             document.addEventListener('scroll', function () {
                 //guardando a posicao da pagina no eixo y
                 var posicaoy = window.pageYOffset;
                 if (posicaoy !== 0) {
                     document.getElementById('redes').setAttribute('style', 'display:none')
                     document.getElementById('menu').setAttribute('style', 'display:none')
+                    document.getElementById('carrinhoHeadermobile').setAttribute('style', 'display:none')
                     document.getElementById('btnarea').setAttribute('style', 'display:flex')
                     document.querySelector('.header').classList.add('animationheader')
                 } else {
                     document.querySelector('.header').classList.remove('animationheader')
                     document.getElementById('redes').setAttribute('style', 'display:flex')
+                    document.getElementById('carrinhoHeadermobile').setAttribute('style', 'display:flex')
                     document.getElementById('btnarea').setAttribute('style', 'display:none')
                     document.getElementById('menu').setAttribute('style', 'display:flex')
                     // header.setAttribute('style', 'background-attachment:fixed;')
@@ -119,7 +122,7 @@ export default function Home() {
     function showdetalhes(item) {
         setIteminfo(item)
         setModaldetails(true)
-      
+
     }
 
 
@@ -301,7 +304,12 @@ export default function Home() {
                     <button onClick={() => setModalCarrinho(true)} style={{ textDecorationLine: "none" }}><MdAddShoppingCart size={30} color='#fff'></MdAddShoppingCart><p style={{ width: "15px", height: "15px", display: "flex", alignItems: "center", justifyContent: "center", color: "white", backgroundColor: "green", borderRadius: "50%", padding: "3px", textDecoration: "none" }}>
                         {itensnocarrinho.length}</p><span style={{ color: "white", marginLeft: "10px" }}>{showvalorfinal.toLocaleString('pt-bt', { style: 'currency', currency: 'BRL' })}</span></button>
                 </div>
-                <button className='menu' id='menu'><MdMenu color='#fff' size={40} onClick={opemMenu}></MdMenu></button>
+                <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                    <button id='carrinhoHeadermobile' onClick={() => setModalCarrinho(true)} style={{ textDecorationLine: "none" }}><MdAddShoppingCart size={30} color='#fff'></MdAddShoppingCart><p style={{ width: "15px", height: "15px", display: "flex", alignItems: "center", justifyContent: "center", color: "white", backgroundColor: "green", borderRadius: "50%", padding: "3px", textDecoration: "none" }}>
+                        {itensnocarrinho.length}</p><div><span style={{ color: "white", marginLeft: "10px" }}>{window.screen.width > 600 ? showvalorfinal.toLocaleString('pt-bt', { style: 'currency', currency: 'BRL' }) : ''}</span></div></button>
+                    <button className='menu' id='menu'><MdMenu color='#fff' size={40} onClick={opemMenu}></MdMenu></button>
+
+                </div>
             </header>
             <section className='section1'>
                 <SlideHome></SlideHome>

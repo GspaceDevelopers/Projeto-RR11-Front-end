@@ -45,7 +45,7 @@ const SlideHome = () => {
     }, [])
     return (
         <div className="slide-container">
-            {tamanhotela === 428 ?<Zoom duration={5000} pauseOnHover={false} scale={0.4}>
+            {tamanhotela <= 600 ? <Zoom duration={5000} pauseOnHover={false} scale={0.4}>
                     <div className="each-fade">
                         <img className="slideimg" src={fadeImages2[0]} />
                     </div>
