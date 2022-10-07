@@ -10,6 +10,7 @@
 .produto-info h2 {
   margin-left: 0;
   float: left;
+  width: 200px;
   font-size: 15px;
   text-align: left;
   text-transform: uppercase;
@@ -27,6 +28,7 @@
 }
 .produto-info h2:last-child {
   margin-right: 0;
+  width: auto;
   margin-left: 10px;
 }
 .product-ajust {
@@ -54,4 +56,30 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+}
+.ajust-button-list {
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  display: flex;
+  gap: 5px;
+}
+#delete-product {
+  margin: 10px;
+  height: 35px;
+  width: 100px;
+  padding: 5px;
+  font-size: 16px !important;
+  float: left;
+  top: 0;
+  cursor: pointer;
+  border: 2px solid grey;
+
+  outline: none;
+  font-weight: 600;
+  cursor: pointer;
+  color: black;
+  background-color: white;
+  font-size: 20px;
+  transition: 0.3s ease;
 }
