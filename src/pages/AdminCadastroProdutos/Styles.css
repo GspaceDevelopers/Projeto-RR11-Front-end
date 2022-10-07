@@ -3,7 +3,8 @@
 }
 
 .input-number input {
-  width: 34%;
+  color: black;
+  width: 38%;
 }
 
 .input-categoria {
@@ -11,6 +12,7 @@
 }
 
 .input-categoria input {
+  color: black;
   width: 34%;
 }
 #description {
@@ -19,6 +21,7 @@
 #form-create {
   display: flex;
   width: 100%;
+
   flex-direction: column;
 }
 
@@ -40,4 +43,10 @@
   margin-left: 20%;
   margin-top: 50px;
   width: 100%;
+}
+.background-create {
+}
+
+.create-products input {
+  color: black;
 }
