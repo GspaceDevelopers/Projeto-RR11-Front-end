@@ -8,6 +8,7 @@ import api from "../../services/api";
 
 import firebase from "../../services/firebaseconnection";
 import { AuthContext } from "../../Contexts/auth";
+import { BsPlusLg } from "react-icons/bs";
 
 const AdminCadastroProdutos = () => {
   const { user } = useContext(AuthContext);
@@ -27,6 +28,8 @@ const AdminCadastroProdutos = () => {
   const [urlFoto6, setUrlFoto6] = useState([]);
   const [urlFoto7, setUrlFoto7] = useState([]);
   const [urlFoto8, setUrlFoto8] = useState([]);
+  const [inputFile, SetInputFile] = useState(0);
+
   async function fileImage(e) {
     const imageurlLet = e.target.files[0];
 
@@ -197,6 +200,10 @@ const AdminCadastroProdutos = () => {
     e.preventDefault();
     const produto = document.getElementById("produto").value;
     const cor = document.getElementById("cor").value;
+    const cor2 = document.getElementById("cor2").value;
+    const cor3 = document.getElementById("cor3").value;
+    const cor4 = document.getElementById("cor4").value;
+
     const categoria = document.getElementById("categoria").value;
     const tamanho = document.getElementById("tamanho").value;
     const tamanho2 = document.getElementById("tamanho2").value;
@@ -235,9 +242,9 @@ const AdminCadastroProdutos = () => {
       tamanho3: tamanho3,
       tamanho4: tamanho4,
       cor: cor,
-      cor2: "cor2",
-      cor3: "cor3",
-      cor4: "cor4",
+      cor2: cor2,
+      cor3: cor3,
+      cor4: cor4,
       modelo: modelo,
     };
     await api
@@ -291,7 +298,12 @@ const AdminCadastroProdutos = () => {
         alert(error);
       });
   }
+  function plusFile() {
+    SetInputFile(inputFile + 1);
+    console.log(inputFile);
+  }
 
+  console.log(inputFile.length);
   return (
     <div className="background-create">
       <Header />
@@ -306,8 +318,11 @@ const AdminCadastroProdutos = () => {
               name="produto"
               id="produto"
             />
+            <input type="text" name="modelo" id="modelo" placeholder="modelo" />
             <div className="input-categoria">
-              <input type="text" name="cor" placeholder="cor" id="cor" />
+              <input type="text" name="preco" placeholder="preço" id="preco" />
+              <input type="text" name="marca" placeholder="marca" id="marca" />
+
               <input
                 type="text"
                 name="categoria"
@@ -316,12 +331,6 @@ const AdminCadastroProdutos = () => {
               />
             </div>
             <div className="input-number">
-              <input
-                type="text"
-                name="modelo"
-                id="modelo"
-                placeholder="modelo"
-              />
               <input
                 type="text"
                 name="tamanho"
@@ -346,67 +355,149 @@ const AdminCadastroProdutos = () => {
                 placeholder="tamanho"
                 id="tamanho4"
               />
-
-              <input type="text" name="preco" placeholder="preço" id="preco" />
             </div>
-            <div>
-              <input
-                type="file"
-                multiple="multiple"
-                accept="image/*"
-                onChange={fileImage}
-                id=""
-              />
+            <div className="input-number">
+              <input type="text" name="cor" placeholder="cor (1)" id="cor" />
+              <input type="text" name="cor" placeholder="cor (2)" id="cor2" />
+              <input type="text" name="cor" placeholder="cor (3)" id="cor3" />
+              <input type="text" name="cor" placeholder="cor (4)" id="cor4" />
+            </div>
+            <div id="input-file">
+              <div id="file-style">
+                <label htmlFor="arquivo" id="label-file">
+                  Enviar imagem (1)
+                </label>
+                <input
+                  name="arquivo"
+                  type="file"
+                  multiple="multiple"
+                  accept="image/*"
+                  onChange={fileImage}
+                  id="arquivo"
+                />
+              </div>
+              <div id="file-style">
+                <label htmlFor="arquivo" id="label-file">
+                  Enviar imagem (2)
+                </label>
+                <input
+                  type="file"
+                  multiple="multiple"
+                  accept="image/*"
+                  onChange={fileImage2}
+                  id="arquivo"
+                />
+              </div>
 
-              <input
-                type="file"
-                multiple="multiple"
-                accept="image/*"
-                onChange={fileImage2}
-                id=""
-              />
-              <input
-                type="file"
-                multiple="multiple"
-                accept="image/*"
-                onChange={fileImage3}
-                id=""
-              />
-              <input
-                type="file"
-                multiple="multiple"
-                accept="image/*"
-                onChange={fileImage4}
-                id=""
-              />
-              <input
-                type="file"
-                multiple="multiple"
-                accept="image/*"
-                onChange={fileImage5}
-                id=""
-              />
-              <input
-                type="file"
-                multiple="multiple"
-                accept="image/*"
-                onChange={fileImage6}
-                id=""
-              />
-              <input
-                type="file"
-                multiple="multiple"
-                accept="image/*"
-                onChange={fileImage7}
-                id=""
-              />
-              <input
-                type="file"
-                multiple="multiple"
-                accept="image/*"
-                onChange={fileImage8}
-                id=""
-              />
+              {inputFile > 0 ? (
+                <div id="file-style">
+                  <label htmlFor="arquivo" id="label-file">
+                    Enviar imagem (3)
+                  </label>
+                  <input
+                    type="file"
+                    multiple="multiple"
+                    accept="image/*"
+                    onChange={fileImage3}
+                    id="arquivo"
+                  />
+                </div>
+              ) : (
+                ""
+              )}
+              {inputFile >= 2 ? (
+                <div id="file-style">
+                  <label htmlFor="arquivo" id="label-file">
+                    Enviar imagem (4)
+                  </label>
+                  <input
+                    type="file"
+                    multiple="multiple"
+                    accept="image/*"
+                    onChange={fileImage4}
+                    id="arquivo"
+                  />
+                </div>
+              ) : (
+                ""
+              )}
+              {inputFile >= 3 ? (
+                <div id="file-style">
+                  <label htmlFor="" id="label-file">
+                    Enviar imagem (5)
+                  </label>
+                  <input
+                    type="file"
+                    multiple="multiple"
+                    accept="image/*"
+                    onChange={fileImage5}
+                    id="arquivo"
+                  />
+                </div>
+              ) : (
+                ""
+              )}
+              {inputFile >= 4 ? (
+                <div id="file-style">
+                  <label htmlFor="arquivo" id="label-file">
+                    Enviar imagem (6)
+                  </label>
+                  <input
+                    type="file"
+                    multiple="multiple"
+                    accept="image/*"
+                    onChange={fileImage6}
+                    id="arquivo"
+                  />
+                </div>
+              ) : (
+                ""
+              )}
+
+              {inputFile >= 5 ? (
+                <div id="file-style">
+                  <label htmlFor="arquivo" id="label-file">
+                    Enviar imagem (7)
+                  </label>
+                  <input
+                    type="file"
+                    multiple="multiple"
+                    accept="image/*"
+                    onChange={fileImage7}
+                    id="arquivo"
+                  />
+                </div>
+              ) : (
+                ""
+              )}
+              {inputFile >= 6 ? (
+                <div id="file-style">
+                  <label htmlFor="arquivo" id="label-file">
+                    Enviar imagem (8)
+                  </label>
+                  <input
+                    type="file"
+                    multiple="multiple"
+                    accept="image/*"
+                    onChange={fileImage8}
+                    id="arquivo"
+                  />
+                </div>
+              ) : (
+                ""
+              )}
+
+              {inputFile <= 5 ? (
+                <button
+                  type="button"
+                  id="btn-plus-file-image"
+                  onClick={plusFile}
+                >
+                  <BsPlusLg size={15} color="white" />
+                </button>
+              ) : (
+                ""
+              )}
             </div>
             <textarea
               name=""
