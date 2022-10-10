@@ -1,5 +1,8 @@
 import { post } from "axios";
-export default function sendMail() {
+import { toast } from "react-toastify";
+export default async function sendMail(e) {
+  e.preventDefault();
+
   let url = "https://apigspacemail.herokuapp.com";
   const name = document.getElementById("nameMail").value;
   const replyTo = document.getElementById("email").value;
@@ -16,9 +19,11 @@ export default function sendMail() {
     text: text,
   };
 
-  post(urlSend, data, config)
+  await post(urlSend, data, config)
     .then((response) => {
+      toast.success("Envio feito");
       console.log(response.data);
+      window.location.reload();
     })
     .catch((error) => {
       alert(error);
